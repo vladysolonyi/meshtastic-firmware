@@ -1,4 +1,5 @@
 #include "configuration.h"
+#include "modules/intelnodes/RCSlotModule.h"
 #if !MESHTASTIC_EXCLUDE_INPUTBROKER
 #include "buzz/BuzzerFeedbackThread.h"
 #include "input/ExpressLRSFiveWay.h"
@@ -138,7 +139,7 @@ void setupModules()
         neighborInfoModule = new NeighborInfoModule();
 #endif
 #if !MESHTASTIC_EXCLUDE_DETECTIONSENSOR
-        detectionSensorModule = new DetectionSensorModule();
+        //detectionSensorModule = new DetectionSensorModule();
 #endif
 #if !MESHTASTIC_EXCLUDE_ATAK
         atakPluginModule = new AtakPluginModule();
@@ -163,6 +164,7 @@ void setupModules()
 #endif
         // Example: Put your module here
         // new ReplyModule();
+        new RCSlotModule();
 #if (HAS_BUTTON || ARCH_PORTDUINO) && !MESHTASTIC_EXCLUDE_INPUTBROKER
         if (config.display.displaymode != meshtastic_Config_DisplayConfig_DisplayMode_COLOR) {
             rotaryEncoderInterruptImpl1 = new RotaryEncoderInterruptImpl1();
